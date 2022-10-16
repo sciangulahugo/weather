@@ -1,21 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { deleteCity } from '../../redux/actions/citiesActions.js';
 
 export default function Card() {
     const { cities } = useSelector((state) => state.cities);
-    console.log(cities);
-
-    /*
-    return (
-        <div>
-            {cities &&
-                cities.map((city) => {
-                    return (
-
-                    );
-                })}
-        </div>
-    );
-    */
+    const dispatch = useDispatch();
 
     return (
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 mt-2 g-2">
@@ -27,6 +16,9 @@ export default function Card() {
                                 <div className="d-flex justify-content-between align-items-center">
                                     <p className="h4">{city.name}</p>
                                     <button
+                                        onClick={() => {
+                                            dispatch(deleteCity(city.id));
+                                        }}
                                         type="button"
                                         className="btn-close"
                                         aria-label="Close"
