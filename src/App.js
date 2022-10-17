@@ -21,19 +21,13 @@ function App() {
                             },
                         }
                     )
-                        .then((response) => {
-                            console.log(response);
-                            return response.json();
-                        })
+                        .then((response) => response.json())
                         .then((json) => {
-                            // alert(
-                            //     `Vos sos de ${json.city} - ${json.regionName}`
-                            // );
-                            dispatch(getCityWeather(json.city));
+                            console.log(json);
+                            alert(json);
+                            // dispatch(getCityWeather(json.city))
                         })
-                        .catch((err) => {
-                            console.log('error', err);
-                        });
+                        .catch((err) => alert(err));
                 }
             });
         // Direct
