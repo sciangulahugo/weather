@@ -21,7 +21,10 @@ function App() {
                             },
                         }
                     )
-                        .then((response) => response.json())
+                        .then((response) => {
+                            console.log(response);
+                            return response.json();
+                        })
                         .then((json) => {
                             // alert(
                             //     `Vos sos de ${json.city} - ${json.regionName}`
@@ -33,21 +36,24 @@ function App() {
                         });
                 }
             });
-
+        // Direct
         // fetch(`https://api.ipify.org/?format=json`)
         //     .then((response) => response.json())
         //     .then((json) => {
         //         if (json.ip !== undefined) {
         //             fetch(`http://ip-api.com/json/${json.ip}`)
-        //                 .then((response) => response.json())
-        //                 .then((json) =>
+        //                 .then((response) => {
+        //                     console.log(response);
+        //                     return response.json();
+        //                 })
+        //                 .then((json) => {
+        //                     console.log(json);
         //                     alert(
         //                         `Vos sos de ${json.city} - ${json.regionName}`
-        //                     )
-        //                 );
+        //                     );
+        //                 });
         //         }
         //     });
-
         //obtener los datos sin ssl
         // fetch(
         //     'https://cors-anywhere.herokuapp.com/ip-api.com/json/190.183.104.235',
