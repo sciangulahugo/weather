@@ -6,10 +6,15 @@ const initialState = {
 function cities(state = initialState, action) {
     switch (action.type) {
         case GET_CITY_WEATHER:
-            return {
-                ...state,
-                cities: [...state.cities, action.payload],
-            };
+            // console.log(action.payload.id);
+            if (state.cities.find((city) => city.id === action.payload.id))
+                alert('Ciudad ya existente');
+            else {
+                return {
+                    ...state,
+                    cities: [...state.cities, action.payload],
+                };
+            }
         case DELETE_CITY:
             return {
                 ...state,

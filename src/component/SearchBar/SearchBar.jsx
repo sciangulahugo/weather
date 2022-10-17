@@ -23,10 +23,13 @@ export default function SearchBar() {
     // Despachamos lo que esta en el input
     function sendInput() {
         if (input === '') alert('Ingresa una ciudad');
-        else dispatch(getCityWeather(input));
+        else {
+            dispatch(getCityWeather(input));
+            setInput('');
+        }
     }
 
-    console.log(display);
+    // console.log(display);
 
     // const [loading, setLoading] = useState({
     //     state: true,
@@ -49,10 +52,11 @@ export default function SearchBar() {
             role="search"
         >
             <input
+                value={input}
                 onChange={(e) => handleChange(e)}
                 className="form-control me-2"
                 type="search"
-                placeholder="Search"
+                placeholder="City..."
                 aria-label="Search"
             ></input>
             <button
@@ -65,9 +69,9 @@ export default function SearchBar() {
                 Search
             </button>
             {display ? (
-                <button class="btn btn-success" type="button" disabled>
+                <button className="btn btn-success" type="button" disabled>
                     <span
-                        class="spinner-border spinner-border-sm"
+                        className="spinner-border spinner-border-sm"
                         role="status"
                         aria-hidden="true"
                     ></span>

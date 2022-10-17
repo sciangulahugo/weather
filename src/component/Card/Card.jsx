@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
 import { deleteCity } from '../../redux/actions/citiesActions.js';
+import { Link } from 'react-router-dom';
 
 export default function Card() {
     const { cities } = useSelector((state) => state.cities);
@@ -28,6 +28,12 @@ export default function Card() {
                                     <h2 className="text-center">
                                         {Math.round(city.temp)}° C
                                     </h2>
+                                    <a
+                                        href={`https://www.google.com/maps/@${city.latitud},${city.longitud},15z`}
+                                        target="_blank"
+                                    >
+                                        map
+                                    </a>
                                 </div>
                                 <div className="row row-cols-3 align-items-center m-0 bg-light border rounded">
                                     <div className="col">
